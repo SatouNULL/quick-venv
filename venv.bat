@@ -1,4 +1,5 @@
 @echo off
+for /f %%a in ('echo prompt $E ^| cmd') do set "ESC=%%a"
 set "PYTHON_CMD=python"
 
 if not "%~1"=="" (
@@ -11,7 +12,8 @@ if not defined VIRTUAL_ENV (
         %PYTHON_CMD% -m venv .venv
         if not exist ".venv\Scripts\python.exe" (
             set "PYTHON_CMD="
-            echo ERROR: Failed to create virtual environment.
+            set "ESC="
+            echo %ESC%[31mFailed to create virtual environment.%ESC%[0m 1>&2
             exit /b
         )
     )
@@ -20,5 +22,3 @@ if not defined VIRTUAL_ENV (
     call deactivate.bat
 )
 set "PYTHON_CMD="
-
-
