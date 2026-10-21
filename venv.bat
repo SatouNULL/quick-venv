@@ -22,3 +22,4 @@ if not defined VIRTUAL_ENV (
     call deactivate.bat
 )
 set "PYTHON_CMD="
+set "ESC="
