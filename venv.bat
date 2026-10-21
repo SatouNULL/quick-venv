@@ -9,7 +9,7 @@ if not defined VIRTUAL_ENV (
     if not exist ".venv\Scripts\python.exe" (
         echo Creating a %PYTHON_CMD% virtual environment...
         %PYTHON_CMD% -m venv .venv
-        if errorlevel 1 (
+        if not exist ".venv\Scripts\python.exe" (
             set "PYTHON_CMD="
             echo ERROR: Failed to create virtual environment.
             exit /b
